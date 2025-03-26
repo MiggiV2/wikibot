@@ -25,6 +25,7 @@ public class MatrixService
 
 	public void sendMessage(String message)
 	{
+		// MatrixResources cachen -> Performance
 		RoomResource room = getRoom(createMatrixResources());
 		room.sendMessage(Message.builder().body(message).build());
 	}

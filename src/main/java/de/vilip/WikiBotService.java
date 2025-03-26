@@ -40,6 +40,7 @@ public class WikiBotService
 	void sendMessage()
 	{
 		log.info("Start fetching article...");
+		// summarizeArticle() und / oder getArticle() in Variablen zwischen speichern. -> Lesbarkeit.
 		matrixService.sendMessage(summarizeArticle(getArticle()));
 	}
 
@@ -51,6 +52,7 @@ public class WikiBotService
 
 	private String getArticle()
 	{
+		// @Inject Tokens -> https://quarkus.io/guides/security-openid-connect-client-reference#inject-tokens
 		Tokens tokens = oidcClient.getTokens().await().indefinitely();
 		return wikimediaRestService.getFeaturedPage(ENGLISH,
 			DateUtils.getCurrentYear(), DateUtils.getCurrentMonth(),
